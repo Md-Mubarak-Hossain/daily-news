@@ -23,7 +23,7 @@ const displayNewsTitle = newsType => {
         const newsTitleDiv = document.createElement('div');
         newsTitleDiv.classList.add('d-flex');
         newsTitleDiv.innerHTML = `
-        <button class="btn btn-outline-primary btn-white me-1 border-0" onclick="loadNews('${newsHeading.category_id}')">${newsHeading.category_name}</button>
+        <button class="btn btn-outline-primary btn-white me-1 border-0" onclick="loadNews('${newsHeading.category_id}','${newsHeading.category_name}')">${newsHeading.category_name}</button>
         `;
         newsTitleContainer.appendChild(newsTitleDiv);
     })
@@ -41,30 +41,24 @@ loadNews in card
 */
 
 
-const loadNews = async (category_id) => {
+const loadNews = async (category_id, newsCategoryName) => {
     loadSpiner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
     const res = await fetch(url);
     const data = await res.json();
-    displayNews(data.data);
+    displayNews(data.data, newsCategoryName);
 }
 
-const displayNews = (newsDetail) => {
+const displayNews = (newsDetail, newsCategoryName) => {
     const newsCard = document.getElementById('news-card');
     const inputField = document.getElementById('input-field');
-    inputField.value = newsDetail.length + ' items found this category news.';
-    console.log(inputField.value);
-    newsCard.innerText = '';
-    console.log(newsDetail);
+    inputField.value = `${newsDetail.length} items found for category ${newsCategoryName}`;
 
+    newsCard.innerText = '';
 
     // sorting
-
-
     newsDetail.sort((a, b) => parseFloat(b.total_view || 0) - parseFloat(a.total_view || 0));
-
     newsDetail.forEach(eachNews => {
-        console.log(eachNews);
 
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('card');
@@ -122,7 +116,7 @@ modal
 ..........................................
 // */
 const loadNewsDetails = (detailes, detailes2) => {
-    console.log(detailes);
+    // console.log(detailes);
     const newsDetailsContainer = document.getElementById('modal-body');
     newsDetailsContainer.innerHTML = `<p>${detailes}</p>
     <p>${detailes2}</p>`;
