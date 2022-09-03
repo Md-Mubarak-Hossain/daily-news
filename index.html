@@ -52,21 +52,11 @@
 
         <section class="container">
             <div>
-                <input id="input-field" type="text" class="form-control bg-white py-3 w-100 px-3 mb-3">
+                <input id="input-field" type="text" class="form-control bg-white py-3 w-100 px-3 mb-3 fw-bold fs-4">
                 <div class="d-flex justify-content-between">
                     <div class="d-flex text-center">
                         <p class="pe-2 fw-bold">Sort By View</p>
-                        <div class="dropdown">
-                            <a class="btn bg-white btn-outline-danger dropdown-toggle" onclick="reOrder(0)"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                By Default
-                            </a>
-
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" onclick="reOrder('ascending')">Asending</a></li>
-                                <li><a class="dropdown-item" onclick="reOrder('descending')">Desencding</a></li>
-                            </ul>
-                        </div>
+                        <input type="text" placeholder="By Default sort" class="fw-bold fs-5">
                     </div>
                     <div>
                         <button class="btn btn-outline-danger btn-primary text-light fw-bold">Todays Pick</button>
