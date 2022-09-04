@@ -1,3 +1,16 @@
+/*
+.......................
+
+blog display
+
+.......................*/
+
+const blogDisplay = () => {
+    const blogField = document.getElementById('blogDetails');
+    blogField.classList.remove('d-none');
+
+}
+
 /*.................................
 
 load news in title or navigation
