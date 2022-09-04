@@ -218,7 +218,7 @@
             </div>
         </section>
     </header>
-    <main class="container">
+    <main class="container-md container-lg">
         <!-- spinner/loder -->
         <section style="height:50px" class="text-center my-3 py-2 ">
             <button id="loader" class="btn btn-white text-gray fw-bold d-none" type="button">
@@ -227,8 +227,14 @@
             </button>
         </section>
 
+        <section class="container">
+            <div id="no-data" class="d-none text-center text-danger">
+                <p>No data availabe.</p>
+            </div>
+        </section>
         <!-- news card -->
         <section id="news-card" class="container" data-bs-toggle="modal" data-bs-target="#blogDetails">
+
 
         </section>
 
@@ -263,9 +269,9 @@
 
     <script src="js/dailyNews.js"></script>
 </body>
-<footer style="height:80px;" class="bg-dark text-center text-warning">
-    <div class=" pt-3">
-        <span>Daily News &copy;Copyright 2022. </span>
+<footer class="bg-secondary text-center">
+    <div style="height: 60px ;" class=" pt-md-2 pt-lg-2">
+        <span class="text-warning">Daily News &copy;Copyright 2022. </span>
     </div>
 </footer>
 

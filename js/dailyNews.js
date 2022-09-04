@@ -43,10 +43,15 @@ loadNews in card
 
 const loadNews = async (category_id, newsCategoryName) => {
     loadSpiner(true);
-    const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    displayNews(data.data, newsCategoryName);
+    try {
+        const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
+        const res = await fetch(url);
+        const data = await res.json();
+        displayNews(data.data, newsCategoryName);
+    }
+    catch {
+        return 'not found';
+    }
 }
 
 const displayNews = (newsDetail, newsCategoryName) => {
@@ -55,7 +60,15 @@ const displayNews = (newsDetail, newsCategoryName) => {
     inputField.value = `${newsDetail.length} items found for category ${newsCategoryName}`;
 
     newsCard.innerText = '';
+    console.log(newsDetail);
+    const noData = document.getElementById('no-data');
+    if (newsDetail.length === 0) {
+        noData.classList.remove('d-none');
 
+    }
+    else {
+        noData.classList.add('d-none');
+    }
     // sorting
     newsDetail.sort((a, b) => parseFloat(b.total_view || 0) - parseFloat(a.total_view || 0));
     newsDetail.forEach(eachNews => {
@@ -64,6 +77,10 @@ const displayNews = (newsDetail, newsCategoryName) => {
         newsDiv.classList.add('card');
         newsDiv.classList.add('mb-3');
         newsDiv.classList.add('rounded-5');
+        if (`${eachNews.author.name}` === "null" || `${eachNews.total_view}` === "null") {
+            console.log('null');
+        }
+
         newsDiv.innerHTML = `   
         <div onclick="loadNewsDetails('${eachNews.title}','${eachNews.author.name}','${eachNews.details.slice(0, 400)}')"
         class="row ">
