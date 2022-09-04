@@ -139,3 +139,5 @@ const loadSpiner = (isLoading) => {
         loadingSpin.classList.add('d-none');
     }
 }
+
+loadNews('05', "Entertainment");
