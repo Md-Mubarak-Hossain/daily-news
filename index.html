@@ -24,15 +24,15 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
+                    <img height="45px" src="images/images.png" class="" alt="">
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <img src="images/images.png" class="w-25" alt="">
                             </li>
 
                         </ul>
-                        <div class="d-flex">
-                            <button class="btn mx-2  hover-text-color" type="submit"
+                        <div class="d-md-flex d-lg-flex">
+                            <button class="btn mx-2  hover-text-color" type="button"
                                 onclick='loadNews("08","All news")'>News
                             </button>
                             <button type="button" class="btn  mx-2  hover-text-color" data-bs-toggle="modal"
@@ -196,7 +196,7 @@
         </section>
         <!-- news title start -->
         <section class="container">
-            <div id="news-title-container" class="navbar navbar-expand-lg">
+            <div id="news-title-container" class="navbar navbar-expand-lg ">
 
             </div>
         </section>
@@ -205,14 +205,14 @@
         <section class="container">
             <div>
                 <input id="input-field" type="text" class="form-control bg-white py-3 w-100 px-3 mb-3 fw-bold fs-4">
-                <div class="d-flex justify-content-between">
-                    <div class="d-flex text-center">
-                        <p class="pe-2 fw-bold">Sort By View</p>
-                        <input type="text" placeholder="By Default sort" class="fw-bold fs-5">
+                <div class="d-md-flex d-lg-flex justify-content-between">
+                    <div class="d-flex text-center my-2">
+                        <p class="pe-2 fw-bold text-uppercase">Sort By View</p>
+                        <input type="text" placeholder="Default" class="fw-bold w-25">
                     </div>
-                    <div>
-                        <button class="btn btn-outline-danger btn-primary text-light fw-bold">Todays Pick</button>
-                        <button class="btn btn-outline-danger btn-primary text-light fw-bold">Trending</button>
+                    <div class="my-2">
+                        <button class="btn btn-outline-danger btn-primary text-light fw-md-bold">Todays Pick</button>
+                        <button class="btn btn-outline-danger btn-primary text-light fw-md-bold">Trending</button>
                     </div>
                 </div>
             </div>
@@ -234,8 +234,6 @@
 
         <!-- modal -->
         <section>
-            <!-- Button trigger modal -->
-
 
             <!-- Modal -->
             <div class="modal fade" id="blogDetails" tabindex="-1" aria-labelledby="blogDetailsLabel"
@@ -243,15 +241,15 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="blogDetailsLabel">Modal title</h5>
+
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div id="modal-body" class="modal-body">
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+
                         </div>
                     </div>
                 </div>

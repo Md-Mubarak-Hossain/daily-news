@@ -1,16 +1,3 @@
-/*
-.......................
-
-blog display
-
-.......................*/
-
-const blogDisplay = () => {
-    const blogField = document.getElementById('blogDetails');
-    blogField.classList.remove('d-none');
-
-}
-
 /*.................................
 
 load news in title or navigation
@@ -32,11 +19,11 @@ const displayNewsTitle = newsType => {
     const newsCategory = newsType.news_category;
     const newsTitleContainer = document.getElementById('news-title-container');
     newsCategory.forEach(newsHeading => {
-        // inputField.value = newsHeading.length;
+
         const newsTitleDiv = document.createElement('div');
         newsTitleDiv.classList.add('d-flex');
         newsTitleDiv.innerHTML = `
-        <button class="btn btn-outline-primary btn-white me-1 border-0" onclick="loadNews('${newsHeading.category_id}','${newsHeading.category_name}')">${newsHeading.category_name}</button>
+        <button class="btn btn-outline-secondary btn-white me-1 border-0" onclick="loadNews('${newsHeading.category_id}','${newsHeading.category_name}')">${newsHeading.category_name}</button>
         `;
         newsTitleContainer.appendChild(newsTitleDiv);
     })
@@ -72,51 +59,54 @@ const displayNews = (newsDetail, newsCategoryName) => {
     // sorting
     newsDetail.sort((a, b) => parseFloat(b.total_view || 0) - parseFloat(a.total_view || 0));
     newsDetail.forEach(eachNews => {
-
+        console.log(eachNews);
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('card');
         newsDiv.classList.add('mb-3');
         newsDiv.classList.add('rounded-5');
         newsDiv.innerHTML = `   
-        <div onclick="loadNewsDetails('${eachNews.title}','${eachNews.author.name}')" class="row ">
-        <div  class="col-md-4 p-5">
-        <img height=200px; src="${eachNews.thumbnail_url}" class="img-fluid rounded-start " alt="...">
+        <div onclick="loadNewsDetails('${eachNews.title}','${eachNews.author.name}','${eachNews.details.slice(0, 400)}')"
+        class="row ">
+        <div class="col-md-4 p-5">
+            <img height=200px; src="${eachNews.thumbnail_url}" class="img-fluid rounded-start " alt="...">
         </div>
         <div class="col-md-8">
-        <div class="card-body py-5">
-        <h3 class="card-title">${eachNews.title}</h3>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text">
-        
-        <div class="text-muted d-flex justify-content-between pt-5 mt-5">
-        <div class="d-flex">
-        <img height=45px; class="rounded-circle mx-2" src="${eachNews.author.img}">
-        <div style="height:40px">
-        <p style="height:50%; margin:0 2px" class="fw-bold text-dark">${eachNews.author.name}</p>
-        <p style="height:50%; margin:0 2px">${eachNews.author.published_date}
-        </p>
+            <div class="card-body py-5">
+                <h3 class="card-title">${eachNews.title}</h3>
+                <p class="card-text">${eachNews.details.slice(0, 300)}<strong data-bs-toggle="tooltip"
+                        data-bs-placement="top" data-bs-title="Tooltip on top" title="more read click">
+                        ...
+                    </strong>
+                </p>
+    
+                <div class="text-muted d-md-flex d-lg-flex text-justify justify-content-between pt-md-5 mt-md-5">
+                    <div class="d-flex">
+                        <img height=45px; class="rounded-circle mx-2" src="${eachNews.author.img}">
+                        <div style="height:40px">
+                            <p style="height:50%; margin:0 2px" class="fw-bold text-dark">${eachNews.author.name}</p>
+                            <p style="height:50%; margin:0 2px">${eachNews.author.published_date}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex py-3">
+                        <img height=25px; src="images/view-1.png">
+                        <strong class="px-md-2 ">${eachNews.total_view}</strong>
+                    </div>
+                    <div class="d-flex text-muted">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <strong class="px-2">${eachNews.rating.number}</strong>
+                    </div>
+                    <div class="px-2 text-primary fs-2 me-3 px-3 d-none d-md-block d-lg-block">
+                        <strong>&rarr;</strong>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div> 
-        <div class="d-flex">
-        <img height=25px; src="images/view-1.png">
-        <strong class="px-2">${eachNews.total_view}</strong>
-        </div> 
-        <div class="d-flex text-muted">
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star-half-stroke"></i>
-        <strong class="px-2">${eachNews.rating.number}</strong>
-        </div> 
-        <div class="px-2 text-primary fs-2 me-3 px-3">
-        <strong>&rarr;</strong>
-        </div> 
-        </div>
-        </p>
-        </div>
-        </div>
-        </div>
+    </div>
         `;
         newsCard.appendChild(newsDiv);
     })
@@ -128,11 +118,12 @@ const displayNews = (newsDetail, newsCategoryName) => {
 modal
 ..........................................
 // */
-const loadNewsDetails = (detailes, detailes2) => {
-    // console.log(detailes);
+const loadNewsDetails = (title, author, details) => {
     const newsDetailsContainer = document.getElementById('modal-body');
-    newsDetailsContainer.innerHTML = `<p>${detailes}</p>
-    <p>${detailes2}</p>`;
+    newsDetailsContainer.innerHTML = `<h4>${title}</h4>
+    <p class="text-muted">${author}</p>
+        <p class="secondary" > ${details}</p > `
+        ;
 }
 
 /*
