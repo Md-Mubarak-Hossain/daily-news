@@ -34,9 +34,9 @@ loadNewsTitle();
 
 /*
 ..............................
-
+ 
 loadNews in card
-
+ 
 .............................
 */
 
@@ -74,14 +74,14 @@ const displayNews = (newsDetail, newsCategoryName) => {
     newsDetail.forEach(eachNews => {
         console.log(eachNews);
         const newsDiv = document.createElement('div');
-        newsDiv.classList.add('card');
+        // newsDiv.classList.add('card');
         newsDiv.classList.add('mb-3');
-        newsDiv.classList.add('rounded-5');
+        newsDiv.classList.add('rounded-2');
         newsDiv.classList.add('d-none');
         if (`${eachNews.author.name}` === "null" || `${eachNews.total_view}` === "null") {
             console.log('null');
             const newsDiv2 = document.createElement('div');
-            newsDiv2.classList.add('card');
+            // newsDiv2.classList.add('card');
             newsDiv2.classList.add('mb-3');
             newsDiv2.classList.add('py-5');
             newsDiv2.classList.add('text-center');
@@ -89,7 +89,7 @@ const displayNews = (newsDetail, newsCategoryName) => {
             newsDiv2.classList.add('fs-3');
             newsDiv2.classList.add('text-danger');
 
-            newsDiv2.classList.add('rounded-5');
+            newsDiv2.classList.add('rounded-2');
 
             newsDiv2.innerHTML = `<p>No data available</p>`;
             newsCard.appendChild(newsDiv2); ''
@@ -121,7 +121,7 @@ const displayNews = (newsDetail, newsCategoryName) => {
                     </div>
                 </div>
                 <div class="d-flex py-3">
-                    <img height=25px; src="images/view-1.png">
+                    <img height=25px; src="images/view-1.png" class="rounded-circle">
                     <strong class="px-md-2 ">${eachNews.total_view}</strong>
                 </div>
                 <div class="d-flex text-muted">
